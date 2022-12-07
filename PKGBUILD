@@ -10,6 +10,8 @@ makedepends=("git")
 
 package() {
     /usr/bin/pip install PyQt5 ffmpeg-python
-    cp discordsqueezer/main.py $pkgdir/usr/bin/discordsqueezer.py
-    cp discordsqueezer/discordsqueezer_ui.py $pkgdir/usr/bin/discordsqueezer_ui.py
+    mkdir -p "${pkgdir}/usr/bin"
+    cp discordsqueezer/main.py ${pkgdir}/usr/bin/discordsqueezer.py
+    cp discordsqueezer/discordsqueezer_ui.py ${pkgdir}/usr/bin/discordsqueezer_ui.py
+    chmod +x "${pkgdir}/usr/bin/discordsqueezer.py"
 }
