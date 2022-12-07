@@ -1,10 +1,10 @@
 [Desktop Entry]
 Comment[en_GB]=Video compression tool for Discord file size limits
 Comment=Video compression tool for Discord file size limits
-Exec=/usr/bin/discordsqueezer.py
+Exec=/usr/bin/discordsqueezer
 GenericName[en_GB]=Video compression tool for Discord file size limits
 GenericName=Video compression tool for Discord file size limits
-Icon=system-run
+Icon=discordsqueezer
 MimeType=
 Name[en_GB]=DiscordSqueezer
 Name=DiscordSqueezer
