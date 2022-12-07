@@ -13,5 +13,7 @@ package() {
     mkdir -p "${pkgdir}/usr/bin"
     cp discordsqueezer/main.py ${pkgdir}/usr/bin/discordsqueezer.py
     cp discordsqueezer/discordsqueezer_ui.py ${pkgdir}/usr/bin/discordsqueezer_ui.py
+    mkdir -p "${pkgdir}/usr/share/applications"
+    cp discordsqueezer/DiscordSqueezer.desktop ${pkgdir}/usr/share/applications/DiscordSqueezer.desktop
     chmod +x "${pkgdir}/usr/bin/discordsqueezer.py"
 }
