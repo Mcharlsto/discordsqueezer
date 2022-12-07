@@ -6,6 +6,11 @@ arch=("x86_64")
 source=("git+https://github.com/mcharlsto/discordsqueezer.git"
         "git+https://github.com/kkroening/ffmpeg-python")
 depends=("python" "python-pip" "python-pyqt5" "ffmpeg")
+if [[ ${XDG_SESSION_TYPE} -eq 'wayland' ]]; then
+    depends+=('wl-clipboard')
+else
+    depends+=('xclip')
+fi
 sha256sums=("SKIP" "SKIP")
 makedepends=("git")
 

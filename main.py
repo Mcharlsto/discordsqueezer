@@ -4,6 +4,8 @@ import sys
 import subprocess, json, os
 import ffmpeg
 from discordsqueezer_ui import Ui_MainWindow
+if(sys.platform == "windows"):
+    import win32clipboard
 
 class Ui(QtWidgets.QMainWindow):
     def __init__(self):
@@ -33,7 +35,7 @@ class Ui(QtWidgets.QMainWindow):
             targetSize = 50 * 0.95
         elif(self.ui.nitroBtn.isChecked()):
             targetSize = 500 * 0.99
-        
+
         info = ffmpeg.probe(fname[0])
         duration = (info['format']['duration'])
         audioDict = (info['streams'][1])
@@ -49,7 +51,22 @@ class Ui(QtWidgets.QMainWindow):
         video = ffmpeg.output(video, outputFile, video_bitrate=bitrate*1000)
         if os.path.exists(outputFile):
             os.remove(outputFile)
+
         ffmpeg.run(video)
+
+        if(sys.platform == "linux"):
+            if(os.environ.get('XDG_SESSION_TYPE') == "wayland"):
+                os.system("wl-copy -t text/uri-list file://" + outputFile)
+            else:
+                os.system("echo file://" + outputFile + "| xclip -t text/uri-list -selection clipboard")
+
+        msg.close()
+        msg = QtWidgets.QMessageBox()
+        msg.setIcon(QtWidgets.QMessageBox.Information)
+        msg.setText("Video file has been compressed and copied to clipboard ")
+        msg.setWindowTitle("Compress complete")
+        msg.setStandardButtons(QtWidgets.QMessageBox.Ok)
+        msg.exec_()
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
