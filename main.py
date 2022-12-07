@@ -1,15 +1,18 @@
-from PyQt5 import QtWidgets, uic
+from PyQt5 import QtCore, QtGui, QtWidgets, uic
 import sys
 import subprocess, json, os
 import ffmpeg
+from discordsqueezer_ui import Ui_MainWindow
 
 class Ui(QtWidgets.QMainWindow):
     def __init__(self):
-        super(Ui, self).__init__()
-        uic.loadUi('/home/matthew/Documents/discordsqueezer/main.ui', self)
+        super().__init__()
 
-        self.fileBtn.clicked.connect(self.fileBtnRun)
-        self.compressBtn.clicked.connect(self.compressBtnRun)
+        self.ui = Ui_MainWindow()
+        self.ui.setupUi(self)
+
+        self.ui.fileBtn.clicked.connect(self.fileBtnRun)
+        self.ui.compressBtn.clicked.connect(self.compressBtnRun)
 
         self.show()
     
@@ -17,14 +20,14 @@ class Ui(QtWidgets.QMainWindow):
         global fname
         fname = QtWidgets.QFileDialog.getOpenFileName(self, "Select video", "", "MP4 Video (*.mp4)")
         print(fname)
-        self.fileBox.setText(fname[0])
+        self.ui.fileBox.setText(fname[0])
 
     def compressBtnRun(self):
-        if(self.regularBtn.isChecked()):
+        if(self.ui.regularBtn.isChecked()):
             targetSize = 8
-        elif(self.nitrobasicBtn.isChecked()):
+        elif(self.ui.nitrobasicBtn.isChecked()):
             targetSize = 50
-        elif(self.nitroBtn.isChecked()):
+        elif(self.ui.nitroBtn.isChecked()):
             targetSize = 500
         
         info = ffmpeg.probe(fname[0])
@@ -44,6 +47,7 @@ class Ui(QtWidgets.QMainWindow):
             os.remove(outputFile)
         ffmpeg.run(video)
 
-app = QtWidgets.QApplication(sys.argv)
-window = Ui()
-app.exec_()
+if __name__ == '__main__':
+    app = QtWidgets.QApplication(sys.argv)
+    window = Ui()
+    sys.exit(app.exec())
