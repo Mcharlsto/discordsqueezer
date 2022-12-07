@@ -2,3 +2,8 @@ build/
 dist/
 main.ui.autosave
 *.spec
+discordsqueezer/
+ffmpeg-python/
+__pycache__/
+*.zst
+*.kate-swp

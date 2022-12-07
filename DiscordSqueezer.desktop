@@ -13,6 +13,7 @@ StartupNotify=true
 Terminal=true
 TerminalOptions=
 Type=Application
+Categories=AudioVideo
 X-DBUS-ServiceName=
 X-DBUS-StartupType=none
 X-KDE-SubstituteUID=false
