@@ -3,8 +3,7 @@ pkgver="1.0.0"
 pkgrel="1"
 pkgdesc="Video compression tool for Discord file size limits"
 arch=("x86_64")
-source=("git+http://github.com/mcharlsto/discordsqueezer.git")
-sha512sums=("SKIP")
+source=("git+https://github.com/mcharlsto/discordsqueezer.git")
 depends=("python" "python-pip")
 makedepends=("git")
 
