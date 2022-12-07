@@ -17,5 +17,5 @@ package() {
     cp discordsqueezer/DiscordSqueezer.desktop ${pkgdir}/usr/share/applications/DiscordSqueezer.desktop
     chmod +x "${pkgdir}/usr/bin/discordsqueezer"
     mkdir -p "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
-    cp discordsqueezer/icons/discordsqueezer.png ${pkgdir}/usr/share/icons/hicolor/512x512/apps/discordsqueezer.png
+    cp discordsqueezer/icon/discordsqueezer.png ${pkgdir}/usr/share/icons/hicolor/512x512/apps/discordsqueezer.png
 }
