@@ -29,13 +29,16 @@ class Ui(QtWidgets.QMainWindow):
         
         info = ffmpeg.probe(fname[0])
         duration = (info['format']['duration'])
+        audioDict = (info['streams'][1])
+        audioBitrate = float(audioDict['bit_rate']) / 1000
+
         print("Duration sec: " + duration)
         print("Target size mb: " + str(targetSize))
 
         video = ffmpeg.input(fname[0])
         outputFile = fname[0].replace(".mp4", "") + "_squeezed.mp4"
         bitrate = (targetSize * 8192)/int(float(duration))
-        bitrate = bitrate - 128
+        bitrate = bitrate - audioBitrate
         video = ffmpeg.output(video, outputFile, video_bitrate=bitrate*1000)
         if os.path.exists(outputFile):
             os.remove(outputFile)
