@@ -23,7 +23,6 @@ class Ui(QtWidgets.QMainWindow):
     def fileBtnRun(self):
         global fname
         fname = QtWidgets.QFileDialog.getOpenFileName(self, "Select video", "", "MP4 Video (*.mp4)")
-        print(fname)
         self.ui.fileBox.setText(fname[0])
 
     def compressBtnRun(self):
