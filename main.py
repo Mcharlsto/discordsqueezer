@@ -28,11 +28,11 @@ class Ui(QtWidgets.QMainWindow):
 
     def compressBtnRun(self):
         if(self.ui.regularBtn.isChecked()):
-            targetSize = 8
+            targetSize = 8 * 0.9
         elif(self.ui.nitrobasicBtn.isChecked()):
-            targetSize = 50
+            targetSize = 50 * 0.95
         elif(self.ui.nitroBtn.isChecked()):
-            targetSize = 500
+            targetSize = 500 * 0.99
         
         info = ffmpeg.probe(fname[0])
         duration = (info['format']['duration'])
