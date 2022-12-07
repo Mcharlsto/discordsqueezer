@@ -11,6 +11,9 @@ class Ui(QtWidgets.QMainWindow):
 
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+        if(sys.platform == "linux"):
+            print("Running on Linux.")
+            self.setWindowIcon(QtGui.QIcon("/usr/share/icons/hicolor/512x512/apps/discordsqueezer.png"))
 
         self.ui.fileBtn.clicked.connect(self.fileBtnRun)
         self.ui.compressBtn.clicked.connect(self.compressBtnRun)
