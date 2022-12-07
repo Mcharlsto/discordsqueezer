@@ -1,7 +1,7 @@
 #!/usr/bin/python
 from PyQt5 import QtCore, QtGui, QtWidgets, uic
 import sys
-import subprocess, json, os
+import os
 import ffmpeg
 from discordsqueezer_ui import Ui_MainWindow
 
