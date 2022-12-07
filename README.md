@@ -1,4 +1,5 @@
 # DiscordSqueezer
+![](icon/discordsqueezer.png)
 
 A simple GUI for FFMPEG to compress video files down to Discord's file size requirements.
 
