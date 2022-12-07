@@ -2,13 +2,11 @@ from PyQt5 import QtWidgets, uic
 import sys
 import subprocess, json, os
 import ffmpeg
-import ui
 
-ui
 class Ui(QtWidgets.QMainWindow):
     def __init__(self):
         super(Ui, self).__init__()
-        uic.loadUi('E:\Mcharlsto\Documents\FemArch\discordsqueezer\main.ui', self)
+        uic.loadUi('/home/matthew/Documents/discordsqueezer/main.ui', self)
 
         self.fileBtn.clicked.connect(self.fileBtnRun)
         self.compressBtn.clicked.connect(self.compressBtnRun)
