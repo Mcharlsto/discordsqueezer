@@ -4,8 +4,6 @@ import sys
 import subprocess, json, os
 import ffmpeg
 from discordsqueezer_ui import Ui_MainWindow
-if(sys.platform == "windows"):
-    import win32clipboard
 
 class Ui(QtWidgets.QMainWindow):
     def __init__(self):
@@ -59,8 +57,11 @@ class Ui(QtWidgets.QMainWindow):
                 os.system("wl-copy -t text/uri-list file://" + outputFile)
             else:
                 os.system("echo file://" + outputFile + "| xclip -t text/uri-list -selection clipboard")
+        elif(sys.platform == "win32"):
+            print("windows")
+            os.system("windows_clipboard.exe " + outputFile)
 
-        msg.close()
+
         msg = QtWidgets.QMessageBox()
         msg.setIcon(QtWidgets.QMessageBox.Information)
         msg.setText("Video file has been compressed and copied to clipboard ")
