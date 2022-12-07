@@ -1,0 +1,19 @@
+[Desktop Entry]
+Comment[en_GB]=Video compression tool for Discord file size limits
+Comment=Video compression tool for Discord file size limits
+Exec=/usr/bin/discordsqueezer.py
+GenericName[en_GB]=Video compression tool for Discord file size limits
+GenericName=Video compression tool for Discord file size limits
+Icon=system-run
+MimeType=
+Name[en_GB]=DiscordSqueezer
+Name=DiscordSqueezer
+Path=
+StartupNotify=true
+Terminal=true
+TerminalOptions=
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=none
+X-KDE-SubstituteUID=false
+X-KDE-Username=
