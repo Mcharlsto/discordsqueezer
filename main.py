@@ -1,6 +1,6 @@
 from PyQt5 import QtWidgets, uic
 import sys
-import subprocess, json
+import subprocess, json, os
 import ffmpeg
 
 class Ui(QtWidgets.QMainWindow):
@@ -34,8 +34,13 @@ class Ui(QtWidgets.QMainWindow):
 
         video = ffmpeg.input(fname[0])
         outputFile = fname[0].replace(".mp4", "") + "_squeezed.mp4"
-        video = ffmpeg.output(video, outputFile)
+        bitrate = (targetSize * 8192)/int(float(duration))
+        bitrate = bitrate - 128
+        video = ffmpeg.output(video, outputFile, video_bitrate=bitrate*1000)
+        if os.path.exists(outputFile):
+            os.remove(outputFile)
         ffmpeg.run(video)
+
 app = QtWidgets.QApplication(sys.argv)
 window = Ui()
 app.exec_()
